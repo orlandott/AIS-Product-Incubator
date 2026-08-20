@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIS Product Incubator — Build products that make AI go well</title>
+  <meta name="description" content="An AI safety product incubator in Lisbon, in collaboration with the Lisbon AI Safety Hub. Eight weeks of AI safety context, four weeks building in teams, one pitch day." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231e2a78'/%3E%3Cstop offset='.45' stop-color='%236c3ef0'/%3E%3Cstop offset='.75' stop-color='%23c34fd1'/%3E%3Cstop offset='1' stop-color='%23ff9d6c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0d0d12;
+      --ink-2: #1d1d1f;
+      --muted: #6e6e73;
+      --paper: #ffffff;
+      --gray: #f5f5f7;
+      --hairline: rgba(0, 0, 0, 0.08);
+      --g1: #1e2a78;
+      --g2: #6c3ef0;
+      --g3: #c34fd1;
+      --g4: #ff9d6c;
+      --ombre: linear-gradient(100deg, var(--g1) 0%, var(--g2) 34%, var(--g3) 64%, var(--g4) 100%);
+      --radius: 24px;
+      --max: 1100px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      line-height: 1.5;
+    }
+
+    ::selection { background: rgba(108, 62, 240, 0.18); }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.72);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 24px;
+      height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand {
+      font-weight: 700; font-size: 15px; letter-spacing: -0.01em;
+      color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px;
+      white-space: nowrap;
+    }
+    .brand-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--ombre); flex: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a {
+      color: rgba(13, 13, 18, 0.78); text-decoration: none; font-size: 13.5px; font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--ink); color: #fff !important; padding: 7px 16px; border-radius: 999px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #2c2c31; }
+    .menu-btn { display: none; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; border-radius: 999px; font-size: 16px; font-weight: 600;
+      text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      letter-spacing: -0.01em;
+    }
+    .btn-primary {
+      color: #fff; background: var(--ombre); background-size: 130% 130%;
+      box-shadow: 0 8px 24px rgba(108, 62, 240, 0.28);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(108, 62, 240, 0.36); }
+    .btn-ghost { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1.5px rgba(13, 13, 18, 0.18); }
+    .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px rgba(13, 13, 18, 0.4); }
+    .btn-light { color: var(--ink); background: #fff; }
+    .btn-light:hover { transform: translateY(-1px); }
+
+    /* ---------- Type helpers ---------- */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: ""; width: 22px; height: 3px; border-radius: 2px; background: var(--ombre);
+    }
+    h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.08; }
+    .grad-text {
+      background: var(--ombre);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .section { padding: 110px 0; }
+    .section-head { max-width: 720px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin: 14px 0 18px; }
+    .section-head p { font-size: 19px; color: var(--muted); font-weight: 400; }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      position: relative; overflow: hidden;
+      padding: 170px 0 130px; text-align: center;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: -1;
+    }
+    .hero-glow::before, .hero-glow::after {
+      content: ""; position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5;
+    }
+    .hero-glow::before {
+      width: 640px; height: 640px; left: -180px; top: -160px;
+      background: radial-gradient(circle, #6c3ef0 0%, transparent 65%);
+    }
+    .hero-glow::after {
+      width: 640px; height: 640px; right: -180px; top: 60px;
+      background: radial-gradient(circle, #ff9d6c 0%, transparent 65%);
+      opacity: 0.42;
+    }
+    .hero .eyebrow { justify-content: center; margin-bottom: 22px; }
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 88px); font-weight: 800; max-width: 950px; margin: 0 auto 26px;
+    }
+    .hero p.lede {
+      font-size: clamp(18px, 2.4vw, 23px); color: var(--muted); max-width: 640px; margin: 0 auto 40px;
+      font-weight: 400;
+    }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-note { margin-top: 34px; font-size: 14px; color: var(--muted); }
+    .hero-note a { color: inherit; }
+
+    /* ---------- Stats band ---------- */
+    .stats { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+    }
+    .stat { padding: 44px 24px; text-align: center; }
+    .stat + .stat { border-left: 1px solid var(--hairline); }
+    .stat .num { font-size: clamp(38px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; }
+    .stat .lbl { font-size: 15px; color: var(--muted); margin-top: 6px; }
+
+    /* ---------- Timeline ---------- */
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    .step {
+      background: var(--paper); border-radius: var(--radius); padding: 28px 22px;
+      border: 1px solid var(--hairline);
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13, 13, 18, 0.07); }
+    .step .n {
+      font-size: 30px; font-weight: 800; letter-spacing: -0.02em;
+      background: var(--ombre); -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .step h3 { font-size: 17.5px; font-weight: 700; }
+    .step .dur { font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    .step p { font-size: 14.5px; color: var(--muted); }
+
+    /* ---------- Who ---------- */
+    .who-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+    .who h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin: 14px 0 18px; }
+    .who p { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .who-list li {
+      background: var(--gray); border-radius: 18px; padding: 20px 22px;
+      font-size: 16px; font-weight: 500; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .who-list .tick {
+      flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--ombre);
+      display: inline-flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .who-list .tick svg { width: 12px; height: 12px; }
+    .who-list span.sub { display: block; font-weight: 400; font-size: 14px; color: var(--muted); margin-top: 3px; }
+
+    /* ---------- Products ---------- */
+    .products { background: var(--gray); }
+    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      background: var(--paper); border-radius: var(--radius); padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--ombre); opacity: 0; transition: opacity 0.25s ease;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(13, 13, 18, 0.08); }
+    .card:hover::before { opacity: 1; }
+    .card .icon {
+      width: 46px; height: 46px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(108, 62, 240, 0.1), rgba(255, 157, 108, 0.12));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card .icon svg { width: 24px; height: 24px; }
+    .card h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+    .card p { font-size: 15px; color: var(--muted); flex: 1; }
+    .tag {
+      align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 0.03em;
+      padding: 5px 12px; border-radius: 999px; background: var(--gray); color: var(--muted);
+    }
+    .prod-src { margin-top: 40px; font-size: 14.5px; color: var(--muted); max-width: 760px; }
+    .prod-src a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(13,13,18,0.25); }
+    .prod-src a:hover { border-color: var(--ink); }
+
+    /* ---------- Epistemic Bench (dark) ---------- */
+    .bench { background: #0b0b0f; color: #f5f5f7; position: relative; overflow: hidden; }
+    .bench-glow {
+      position: absolute; width: 900px; height: 900px; left: 50%; top: -420px; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(108, 62, 240, 0.35) 0%, rgba(195, 79, 209, 0.14) 45%, transparent 70%);
+      filter: blur(40px); pointer-events: none;
+    }
+    .bench .wrap { position: relative; }
+    .bench .eyebrow { color: rgba(245, 245, 247, 0.6); }
+    .bench h2 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 800; margin: 16px 0 20px; max-width: 780px; }
+    .bench p.big { font-size: 20px; color: rgba(245, 245, 247, 0.72); max-width: 660px; margin-bottom: 36px; }
+    .bench-panel {
+      margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .bench-item {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px; padding: 26px 24px;
+    }
+    .bench-item .k { font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+    .bench-item .k.done { color: #7ee2a8; }
+    .bench-item .k.open { color: #ffb287; }
+    .bench-item h3 { font-size: 17px; font-weight: 700; margin: 10px 0 8px; color: #fff; }
+    .bench-item p { font-size: 14.5px; color: rgba(245, 245, 247, 0.62); }
+
+    /* ---------- Pitch ---------- */
+    .pitch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .pitch h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin: 14px 0 18px; }
+    .pitch p { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
+    .pitch-card {
+      border-radius: var(--radius); padding: 44px 38px; color: #fff;
+      background: var(--ombre); box-shadow: 0 24px 60px rgba(108, 62, 240, 0.3);
+    }
+    .pitch-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
+    .pitch-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .pitch-card li { display: flex; gap: 12px; font-size: 15.5px; align-items: flex-start; }
+    .pitch-card li::before { content: "→"; font-weight: 700; }
+
+    /* ---------- Apply ---------- */
+    .apply { background: var(--gray); text-align: center; }
+    .apply h2 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; margin: 16px 0 20px; }
+    .apply p { font-size: 19px; color: var(--muted); max-width: 560px; margin: 0 auto 38px; }
+    .apply .meta { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+    /* ---------- Footer ---------- */
+    footer { border-top: 1px solid var(--hairline); padding: 48px 0 64px; }
+    .foot { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .foot .brand { font-size: 14px; }
+    .foot-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+    .foot h4 { font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .foot a { display: block; color: var(--ink-2); text-decoration: none; font-size: 14px; margin-bottom: 8px; }
+    .foot a:hover { text-decoration: underline; }
+    .foot-note { margin-top: 40px; font-size: 13px; color: var(--muted); }
+
+    /* ---------- Reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .prod-grid { grid-template-columns: repeat(2, 1fr); }
+      .bench-panel { grid-template-columns: 1fr; }
+      .who-grid, .pitch-grid { grid-template-columns: 1fr; gap: 40px; }
+      .section { padding: 84px 0; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; position: absolute; top: 56px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: 0;
+        background: rgba(255, 255, 255, 0.97);
+        -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--hairline); padding: 8px 0;
+      }
+      .nav-links.open a { padding: 14px 24px; width: 100%; font-size: 16px; }
+      .nav-links.open .nav-cta { background: none; color: var(--ink) !important; border-radius: 0; }
+      .menu-btn {
+        display: inline-flex; flex-direction: column; gap: 5px; background: none; border: none;
+        padding: 10px; cursor: pointer;
+      }
+      .menu-btn span { display: block; width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+      .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .menu-btn.open span:nth-child(2) { opacity: 0; }
+      .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      header.hero { padding: 130px 0 90px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat + .stat { border-left: none; border-top: 1px solid var(--hairline); }
+      .timeline, .prod-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared gradient defs for icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#1e2a78" />
+        <stop offset="0.4" stop-color="#6c3ef0" />
+        <stop offset="0.7" stop-color="#c34fd1" />
+        <stop offset="1" stop-color="#ff9d6c" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="#top"><span class="brand-dot"></span>AIS Product Incubator</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#program">Program</a>
+        <a href="#products">Products</a>
+        <a href="#bench">Epistemic Bench</a>
+        <a href="#pitch">Pitch Day</a>
+        <a href="#apply" class="nav-cta">Apply</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-glow"></div>
+    <div class="wrap">
+      <span class="eyebrow">In collaboration with the Lisbon AI Safety Hub</span>
+      <h1>Build products that <span class="grad-text">make AI go well.</span></h1>
+      <p class="lede">An AI safety product incubator in Lisbon. Learn the field in eight weeks. Build a real product in four. Pitch it to the people who can fund it.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#apply">Apply for Cohort 01</a>
+        <a class="btn btn-ghost" href="#program">See the program</a>
+      </div>
+      <p class="hero-note">For tech workers in Lisbon. Curiosity required. AI safety experience not.</p>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat reveal"><div class="num grad-text">8 weeks</div><div class="lbl">AI safety context, with LAISH</div></div>
+        <div class="stat reveal"><div class="num grad-text">4 weeks</div><div class="lbl">Building products in teams</div></div>
+        <div class="stat reveal"><div class="num grad-text">1 day</div><div class="lbl">Pitching to donors &amp; investors</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="program">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The program</span>
+        <h2>Twelve weeks. Curious to shipped.</h2>
+        <p>A structured path from “I keep hearing about AI safety” to a working product pitched in front of funders.</p>
+      </div>
+      <div class="timeline">
+        <div class="step reveal">
+          <span class="n">01</span>
+          <h3>Apply</h3>
+          <span class="dur">Open call</span>
+          <p>We put out an application for tech workers in Lisbon who are curious about AI safety. Engineers, designers, PMs, data folks — all welcome.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">02</span>
+          <h3>Selection</h3>
+          <span class="dur">Small cohort</span>
+          <p>We select the strongest applicants. We optimize for curiosity, craft, and the ability to ship — not for prior AI safety experience.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">03</span>
+          <h3>Context</h3>
+          <span class="dur">8 weeks · LAISH</span>
+          <p>The Lisbon AI Safety Hub runs the cohort through eight weeks of AI safety fundamentals — the risks, the research landscape, and where products can help.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">04</span>
+          <h3>Build</h3>
+          <span class="dur">4 weeks · Teams</span>
+          <p>The cohort forms teams and spends one month building an AI safety product — a real, demoable tool, not a slide deck.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">05</span>
+          <h3>Pitch</h3>
+          <span class="dur">Demo day</span>
+          <p>Teams pitch their product to potential donors and investors — the shot at funding to keep building beyond the program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="who" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="who-grid">
+        <div class="who reveal">
+          <span class="eyebrow">Who it’s for</span>
+          <h2>Tech workers in Lisbon, <span class="grad-text">curious about safety.</span></h2>
+          <p>You already know how to build. What you’re missing is context — which problems in AI safety actually matter, and which ones a small, fast team can put a dent in.</p>
+          <p>That’s exactly what the incubator provides. LAISH supplies the context; you supply the craft.</p>
+        </div>
+        <ul class="who-list reveal">
+          <li>
+            <span class="tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>Engineers, designers, product managers, data scientists<span class="sub">Anyone who ships software for a living.</span></div>
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>No AI safety background needed<span class="sub">The eight-week context phase brings you up to speed.</span></div>
+          </li>
+          <li>
+            <span class="tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>Based in or near Lisbon<span class="sub">We build together, in person.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section products" id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What you could build</span>
+        <h2>Six products the world needs.</h2>
+        <p>Teams pick their own direction, but they don’t start from a blank page. Here are six example products, drawn from the best current thinking on AI safety tooling.</p>
+      </div>
+      <div class="prod-grid">
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-6 4 3 5-8 5 7"/><path d="M3 21h18"/></svg></div>
+          <h3>Epistemic Virtue Evals</h3>
+          <p>A public benchmark and leaderboard scoring frontier AI models on honesty, calibration, sycophancy and manipulation — so anyone can pick the model that most reliably tells them the truth.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="11" r="2.2"/><circle cx="19" cy="4" r="2.2"/><path d="M6.5 17.5l4-5M13.5 9.5l4-4"/></svg></div>
+          <h3>Provenance Tracer</h3>
+          <p>A tool that lets anyone reading a claim instantly pull up where it came from — the original source, the chain it travelled through, and how robust it actually is — before believing or sharing it.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/><path d="M17.5 2.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg></div>
+          <h3>Angel on the Shoulder</h3>
+          <p>A personal, customisable AI advisor that sits alongside you in real time — flagging manipulation, surfacing your blind spots, and nudging you toward better decisions at the moment they’re made.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 4.5-3.2 8.6-8 10-4.8-1.4-8-5.5-8-10V6z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
+          <h3>Secret-Loyalty Audit Kit</h3>
+          <p>Privacy-preserving protocols that let third parties audit an AI company’s claims about training — verifying models are free of backdoors and hidden loyalties without exposing trade secrets.</p>
+          <span class="tag">Checks &amp; Balances</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="3"/><path d="M3 8l9 5 9-5"/><path d="M12 20.5v-3"/></svg></div>
+          <h3>Safe Harbor</h3>
+          <p>Secure reporting infrastructure for AI-industry insiders: a private hotline, routing to legal support, and resources that make it safe to speak up when something is going wrong inside a lab.</p>
+          <span class="tag">Checks &amp; Balances</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M17 14v6M14 17h6"/></svg></div>
+          <h3>Structured Transparency Dashboard</h3>
+          <p>Tooling that lets AI companies and auditors check each other’s work — verifying claims about model-weight integrity, training data and safety features through structured-transparency protocols.</p>
+          <span class="tag">Checks &amp; Balances</span>
+        </div>
+      </div>
+      <p class="prod-src reveal">Example directions adapted from Forethought’s <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Design sketches for a more sensible world</a> and the <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances in an Automated Society</a> request for proposals.</p>
+    </div>
+  </section>
+
+  <section class="section bench" id="bench">
+    <div class="bench-glow"></div>
+    <div class="wrap">
+      <span class="eyebrow">Already in motion</span>
+      <h2>Epistemic Bench. The frontend is <span class="grad-text">built.</span></h2>
+      <p class="big">Our first product is underway: a benchmark for the epistemic virtues of AI models. The interface exists — now it needs a technical builder to wire it up to real evals. We’re looking for that person in Lisbon.</p>
+      <a class="btn btn-primary" href="#apply">That’s me — get in touch</a>
+      <div class="bench-panel">
+        <div class="bench-item reveal">
+          <span class="k done">✓ Done</span>
+          <h3>Frontend</h3>
+          <p>The Epistemic Bench interface is designed and built — leaderboard, model pages, and scoring views ready to go.</p>
+        </div>
+        <div class="bench-item reveal">
+          <span class="k open">○ Open</span>
+          <h3>Eval backend</h3>
+          <p>Hook the frontend up to a real evaluation pipeline: running models against epistemic-virtue test suites and publishing scores.</p>
+        </div>
+        <div class="bench-item reveal">
+          <span class="k open">○ Open</span>
+          <h3>You</h3>
+          <p>A technical person in Lisbon who wants their next side project to matter. Join the first cohort and take Epistemic Bench across the line.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pitch">
+    <div class="wrap">
+      <div class="pitch-grid">
+        <div class="pitch reveal">
+          <span class="eyebrow">Pitch day</span>
+          <h2>It ends on a <span class="grad-text">stage.</span></h2>
+          <p>The program closes with a pitch day. Every team presents their product — what it does, who it’s for, and what it needs to keep going — to a room of potential donors and investors.</p>
+          <p>The goal isn’t a certificate. It’s funding, momentum, and a product that outlives the program.</p>
+        </div>
+        <div class="pitch-card reveal">
+          <h3>What teams walk away with</h3>
+          <ul>
+            <li>A working, demoable AI safety product</li>
+            <li>A direct line to donors and investors in the space</li>
+            <li>Eight weeks of AI safety grounding from LAISH</li>
+            <li>A team that has actually shipped together</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section apply" id="apply">
+    <div class="wrap reveal">
+      <span class="eyebrow">Cohort 01</span>
+      <h2>Curious? That’s the <span class="grad-text">only prerequisite.</span></h2>
+      <p>Applications for the first cohort are opening soon. If you build software in Lisbon and want your skills pointed at something that matters, we want to hear from you.</p>
+      <!-- TODO: replace the href below with your application form URL when it's live -->
+      <a class="btn btn-primary" href="#apply">Apply for Cohort 01</a>
+      <p class="meta">Lisbon · In person · Free to attend · Run with the <a href="https://lisbonaisafetyhub.org/" target="_blank" rel="noopener" style="color:inherit">Lisbon AI Safety Hub</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="brand" href="#top"><span class="brand-dot"></span>AIS Product Incubator</a>
+          <p style="margin-top: 12px; font-size: 14px; color: var(--muted); max-width: 280px;">An AI safety product incubator in Lisbon, run in collaboration with the Lisbon AI Safety Hub.</p>
+        </div>
+        <div class="foot-cols">
+          <div>
+            <h4>Program</h4>
+            <a href="#program">How it works</a>
+            <a href="#products">Example products</a>
+            <a href="#bench">Epistemic Bench</a>
+            <a href="#apply">Apply</a>
+          </div>
+          <div>
+            <h4>Partners &amp; sources</h4>
+            <a href="https://lisbonaisafetyhub.org/" target="_blank" rel="noopener">Lisbon AI Safety Hub</a>
+            <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Forethought design sketches</a>
+            <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances</a>
+          </div>
+        </div>
+      </div>
+      <p class="foot-note">© 2026 AIS Product Incubator · Lisbon</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('navLinks');
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') { links.classList.remove('open'); btn.classList.remove('open'); }
+    });
+  </script>
+</body>
+</html>
