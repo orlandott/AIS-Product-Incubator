@@ -171,6 +171,8 @@
       -webkit-text-fill-color: transparent; color: transparent;
     }
     .step h3 { font-size: 17.5px; font-weight: 700; }
+    .step p a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(13,13,18,0.25); }
+    .step p a:hover { border-color: var(--ink); }
     .step .dur { font-size: 12.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
     .step p { font-size: 14.5px; color: var(--muted); }
 
@@ -241,6 +243,7 @@
     .bench .eyebrow { color: rgba(245, 245, 247, 0.6); }
     .bench h2 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 800; margin: 16px 0 20px; max-width: 780px; }
     .bench p.big { font-size: 20px; color: rgba(245, 245, 247, 0.72); max-width: 660px; margin-bottom: 36px; }
+    .bench-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
     .bench-panel {
       margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
     }
@@ -403,7 +406,7 @@
           <span class="n">03</span>
           <h3>Context</h3>
           <span class="dur">8 weeks · LAISH</span>
-          <p>Eight weeks of AI safety fundamentals with LAISH — the risks, the landscape, and where products can help.</p>
+          <p>Eight weeks with LAISH following the <a href="https://ai-safety-atlas.com/" target="_blank" rel="noopener">AI Safety Atlas</a> — the risks, the landscape, and where products can help.</p>
         </div>
         <div class="step reveal">
           <span class="n">04</span>
@@ -507,7 +510,10 @@
       <span class="eyebrow">Already in motion</span>
       <h2>Epistemic Bench. The frontend is <span class="grad-text">built.</span></h2>
       <p class="big">Our first product is underway: a benchmark for the epistemic virtues of AI models. Now it needs a technical builder to wire it up to real evals — we’re looking for that person in Lisbon.</p>
-      <a class="btn btn-primary" href="#apply">That’s me — get in touch</a>
+      <div class="bench-ctas">
+        <a class="btn btn-primary" href="#apply">That’s me — get in touch</a>
+        <a class="btn btn-light" href="https://github.com/orlandott/epistemic-bench" target="_blank" rel="noopener">See the frontend</a>
+      </div>
       <div class="bench-panel">
         <div class="bench-item reveal">
           <span class="k done">✓ Done</span>
@@ -579,8 +585,10 @@
           <div>
             <h4>Partners &amp; sources</h4>
             <a href="https://lisbonaisafetyhub.org/" target="_blank" rel="noopener">Lisbon AI Safety Hub</a>
+            <a href="https://ai-safety-atlas.com/" target="_blank" rel="noopener">AI Safety Atlas</a>
             <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Forethought design sketches</a>
             <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances</a>
+            <a href="https://github.com/orlandott/epistemic-bench" target="_blank" rel="noopener">Epistemic Bench frontend</a>
           </div>
         </div>
       </div>
