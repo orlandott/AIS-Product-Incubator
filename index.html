@@ -28,7 +28,7 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
     body {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -295,6 +295,10 @@
     }
 
     /* ---------- Responsive ---------- */
+    @media (min-width: 901px) {
+      .prod-grid .card:nth-child(10) { grid-column: 1 / -1; }
+      .prod-grid .card:nth-child(10) p { max-width: 640px; }
+    }
     @media (max-width: 900px) {
       .timeline { grid-template-columns: repeat(2, 1fr); }
       .prod-grid { grid-template-columns: repeat(2, 1fr); }
@@ -321,10 +325,30 @@
       .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
       .menu-btn.open span:nth-child(2) { opacity: 0; }
       .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-      header.hero { padding: 130px 0 90px; }
+      header.hero { padding: 120px 0 76px; }
+      .hero h1 { font-size: clamp(36px, 11vw, 52px); }
+      .hero p.lede { font-size: 17px; margin-bottom: 30px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { width: 100%; }
       .stats-grid { grid-template-columns: 1fr; }
+      .stat { padding: 28px 20px; }
       .stat + .stat { border-left: none; border-top: 1px solid var(--hairline); }
-      .timeline, .prod-grid { grid-template-columns: 1fr; }
+      .timeline, .prod-grid { grid-template-columns: 1fr; gap: 14px; }
+      .section { padding: 64px 0; }
+      .section-head { margin-bottom: 36px; }
+      .section-head p { font-size: 17px; }
+      .step { padding: 24px 20px; }
+      .card { padding: 26px 22px; }
+      .vetted { padding: 28px 22px; }
+      .vetted h3 { font-size: 19px; }
+      .who p, .pitch p { font-size: 16.5px; }
+      .who-list li { padding: 16px 18px; font-size: 15px; }
+      .pitch-card { padding: 32px 26px; }
+      .bench p.big { font-size: 17.5px; }
+      .bench .btn, .apply .btn { width: 100%; max-width: 400px; }
+      .apply p { font-size: 17px; }
+      .foot { flex-direction: column; }
+      .foot-cols { gap: 36px; }
     }
   </style>
 </head>
@@ -455,7 +479,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">What you could build</span>
-        <h2>Six products the world needs.</h2>
+        <h2>Ten products the world needs.</h2>
         <p>We don’t invent product ideas. Every direction below comes from published, expert-vetted lists — the question of what’s worth building is already answered.</p>
       </div>
       <div class="prod-grid">
@@ -494,6 +518,30 @@
           <h3>Structured Transparency Dashboard</h3>
           <p>Lets AI companies and auditors check each other’s work — verifying claims about model weights, training data and safety features.</p>
           <span class="tag">Checks &amp; Balances</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+          <h3>Deep Briefing Assistant</h3>
+          <p>An AI chief of staff that briefs you before each decision — the relevant facts, the live disagreements, and what you’d otherwise miss.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16"/><path d="M7 14l3-4 3 2 4-6"/><path d="M14 6h3v3"/></svg></div>
+          <h3>Strategic Forecaster</h3>
+          <p>AI-uplifted forecasting and scenario planning — strategic awareness that used to belong to intelligence agencies, open to everyone.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/><path d="M9.5 11l2 2 3.5-4"/></svg></div>
+          <h3>Aligned Recommender</h3>
+          <p>A feed that optimises for what you’d endorse on reflection — not for what keeps you scrolling.</p>
+          <span class="tag">Forethought design sketch</span>
+        </div>
+        <div class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2.5"/><path d="M6.5 7.5l4 8.5M17.5 7.5l-4 8.5M7 6h10"/></svg></div>
+          <h3>Common Ground</h3>
+          <p>Coordination tools that help large groups get on the same page — where they agree, where they don’t, and what would change minds.</p>
+          <span class="tag">Forethought design sketch</span>
         </div>
       </div>
       <div class="vetted reveal">
