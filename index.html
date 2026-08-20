@@ -216,6 +216,16 @@
       align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 0.03em;
       padding: 5px 12px; border-radius: 999px; background: var(--gray); color: var(--muted);
     }
+    .vetted {
+      margin-top: 22px; background: var(--paper); border-radius: var(--radius);
+      padding: 38px 34px; position: relative; overflow: hidden;
+    }
+    .vetted::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--ombre);
+    }
+    .vetted h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .vetted p { font-size: 15.5px; color: var(--muted); max-width: 860px; }
     .prod-src { margin-top: 40px; font-size: 14.5px; color: var(--muted); max-width: 760px; }
     .prod-src a { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(13,13,18,0.25); }
     .prod-src a:hover { border-color: var(--ink); }
@@ -399,7 +409,7 @@
           <span class="n">04</span>
           <h3>Build</h3>
           <span class="dur">4 weeks · Teams</span>
-          <p>The cohort forms teams and spends one month building an AI safety product — a real, demoable tool, not a slide deck.</p>
+          <p>The cohort forms teams, picks a product from the expert-vetted menu, and spends one month building it — a real, demoable tool, not a slide deck.</p>
         </div>
         <div class="step reveal">
           <span class="n">05</span>
@@ -418,7 +428,7 @@
           <span class="eyebrow">Who it’s for</span>
           <h2>Tech workers in Lisbon, <span class="grad-text">curious about safety.</span></h2>
           <p>You already know how to build. What you’re missing is context — which problems in AI safety actually matter, and which ones a small, fast team can put a dent in.</p>
-          <p>That’s exactly what the incubator provides. LAISH supplies the context; you supply the craft.</p>
+          <p>That’s exactly what the incubator provides. LAISH supplies the context, expert-vetted lists supply the product ideas — you supply the craft.</p>
         </div>
         <ul class="who-list reveal">
           <li>
@@ -443,7 +453,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">What you could build</span>
         <h2>Six products the world needs.</h2>
-        <p>Teams pick their own direction, but they don’t start from a blank page. Here are six example products, drawn from the best current thinking on AI safety tooling.</p>
+        <p>We don’t invent product ideas — and teams don’t have to either. Every direction below is pulled from published, expert-vetted lists of AI safety products the field is asking for. The hard question of what’s worth building is already answered.</p>
       </div>
       <div class="prod-grid">
         <div class="card reveal">
@@ -483,7 +493,11 @@
           <span class="tag">Checks &amp; Balances</span>
         </div>
       </div>
-      <p class="prod-src reveal">Example directions adapted from Forethought’s <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Design sketches for a more sensible world</a> and the <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances in an Automated Society</a> request for proposals.</p>
+      <div class="vetted reveal">
+        <h3>No research taste required. <span class="grad-text">The vetting is already done.</span></h3>
+        <p>We’re not making these ideas up, and we won’t ask you to. Deciding what’s worth building in AI safety takes years of research judgement — so we leave that to the experts. Every product on the menu comes from lists that already exist, vetted by the people who published them, and the AI safety experts we plan to bring onto our board of trustees will keep adding to it. You pick, you build.</p>
+      </div>
+      <p class="prod-src reveal">Example directions adapted from Forethought’s <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Design sketches for a more sensible world</a> and the <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances in an Automated Society</a> request for proposals — lists built and vetted by experts in the field.</p>
     </div>
   </section>
 
