@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIS Product Incubator — Build products that make AI go well</title>
   <meta name="description" content="An AI safety product incubator in Lisbon, in collaboration with the Lisbon AI Safety Hub. Eight weeks of AI safety context, four weeks building in teams, one pitch day." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231e2a78'/%3E%3Cstop offset='.45' stop-color='%236c3ef0'/%3E%3Cstop offset='.75' stop-color='%23c34fd1'/%3E%3Cstop offset='1' stop-color='%23ff9d6c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23064e3b'/%3E%3Cstop offset='.45' stop-color='%23059669'/%3E%3Cstop offset='.75' stop-color='%2334d399'/%3E%3Cstop offset='1' stop-color='%23bef264'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -17,10 +17,10 @@
       --paper: #ffffff;
       --gray: #f5f5f7;
       --hairline: rgba(0, 0, 0, 0.08);
-      --g1: #1e2a78;
-      --g2: #6c3ef0;
-      --g3: #c34fd1;
-      --g4: #ff9d6c;
+      --g1: #064e3b;
+      --g2: #059669;
+      --g3: #34d399;
+      --g4: #bef264;
       --ombre: linear-gradient(100deg, var(--g1) 0%, var(--g2) 34%, var(--g3) 64%, var(--g4) 100%);
       --radius: 24px;
       --max: 1100px;
@@ -39,7 +39,7 @@
       line-height: 1.5;
     }
 
-    ::selection { background: rgba(108, 62, 240, 0.18); }
+    ::selection { background: rgba(5, 150, 105, 0.18); }
 
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
@@ -86,9 +86,9 @@
     }
     .btn-primary {
       color: #fff; background: var(--ombre); background-size: 130% 130%;
-      box-shadow: 0 8px 24px rgba(108, 62, 240, 0.28);
+      box-shadow: 0 8px 24px rgba(5, 150, 105, 0.28);
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(108, 62, 240, 0.36); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(5, 150, 105, 0.36); }
     .btn-ghost { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1.5px rgba(13, 13, 18, 0.18); }
     .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px rgba(13, 13, 18, 0.4); }
     .btn-light { color: var(--ink); background: #fff; }
@@ -127,11 +127,11 @@
     }
     .hero-glow::before {
       width: 640px; height: 640px; left: -180px; top: -160px;
-      background: radial-gradient(circle, #6c3ef0 0%, transparent 65%);
+      background: radial-gradient(circle, #059669 0%, transparent 65%);
     }
     .hero-glow::after {
       width: 640px; height: 640px; right: -180px; top: 60px;
-      background: radial-gradient(circle, #ff9d6c 0%, transparent 65%);
+      background: radial-gradient(circle, #bef264 0%, transparent 65%);
       opacity: 0.42;
     }
     .hero .eyebrow { justify-content: center; margin-bottom: 22px; }
@@ -206,7 +206,7 @@
     .card:hover::before { opacity: 1; }
     .card .icon {
       width: 46px; height: 46px; border-radius: 14px;
-      background: linear-gradient(135deg, rgba(108, 62, 240, 0.1), rgba(255, 157, 108, 0.12));
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(190, 242, 100, 0.14));
       display: flex; align-items: center; justify-content: center;
     }
     .card .icon svg { width: 24px; height: 24px; }
@@ -234,7 +234,7 @@
     .bench { background: #0b0b0f; color: #f5f5f7; position: relative; overflow: hidden; }
     .bench-glow {
       position: absolute; width: 900px; height: 900px; left: 50%; top: -420px; transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(108, 62, 240, 0.35) 0%, rgba(195, 79, 209, 0.14) 45%, transparent 70%);
+      background: radial-gradient(circle, rgba(5, 150, 105, 0.35) 0%, rgba(52, 211, 153, 0.14) 45%, transparent 70%);
       filter: blur(40px); pointer-events: none;
     }
     .bench .wrap { position: relative; }
@@ -260,7 +260,7 @@
     .pitch p { font-size: 18px; color: var(--muted); margin-bottom: 16px; }
     .pitch-card {
       border-radius: var(--radius); padding: 44px 38px; color: #fff;
-      background: var(--ombre); box-shadow: 0 24px 60px rgba(108, 62, 240, 0.3);
+      background: var(--ombre); box-shadow: 0 24px 60px rgba(5, 150, 105, 0.3);
     }
     .pitch-card h3 { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
     .pitch-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -331,10 +331,10 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#1e2a78" />
-        <stop offset="0.4" stop-color="#6c3ef0" />
-        <stop offset="0.7" stop-color="#c34fd1" />
-        <stop offset="1" stop-color="#ff9d6c" />
+        <stop offset="0" stop-color="#064e3b" />
+        <stop offset="0.4" stop-color="#059669" />
+        <stop offset="0.7" stop-color="#34d399" />
+        <stop offset="1" stop-color="#bef264" />
       </linearGradient>
     </defs>
   </svg>
@@ -403,19 +403,19 @@
           <span class="n">03</span>
           <h3>Context</h3>
           <span class="dur">8 weeks · LAISH</span>
-          <p>The Lisbon AI Safety Hub runs the cohort through eight weeks of AI safety fundamentals — the risks, the research landscape, and where products can help.</p>
+          <p>Eight weeks of AI safety fundamentals with LAISH — the risks, the landscape, and where products can help.</p>
         </div>
         <div class="step reveal">
           <span class="n">04</span>
           <h3>Build</h3>
           <span class="dur">4 weeks · Teams</span>
-          <p>The cohort forms teams, picks a product from the expert-vetted menu, and spends one month building it — a real, demoable tool, not a slide deck.</p>
+          <p>Teams pick a product from the vetted menu and spend one month building it — a real, demoable tool.</p>
         </div>
         <div class="step reveal">
           <span class="n">05</span>
           <h3>Pitch</h3>
           <span class="dur">Demo day</span>
-          <p>Teams pitch their product to potential donors and investors — the shot at funding to keep building beyond the program.</p>
+          <p>Each team pitches to donors and investors — the shot at funding to keep building.</p>
         </div>
       </div>
     </div>
@@ -453,49 +453,49 @@
       <div class="section-head reveal">
         <span class="eyebrow">What you could build</span>
         <h2>Six products the world needs.</h2>
-        <p>We don’t invent product ideas — and teams don’t have to either. Every direction below is pulled from published, expert-vetted lists of AI safety products the field is asking for. The hard question of what’s worth building is already answered.</p>
+        <p>We don’t invent product ideas. Every direction below comes from published, expert-vetted lists — the question of what’s worth building is already answered.</p>
       </div>
       <div class="prod-grid">
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-6 4 3 5-8 5 7"/><path d="M3 21h18"/></svg></div>
           <h3>Epistemic Virtue Evals</h3>
-          <p>A public benchmark and leaderboard scoring frontier AI models on honesty, calibration, sycophancy and manipulation — so anyone can pick the model that most reliably tells them the truth.</p>
+          <p>A public leaderboard scoring frontier models on honesty, calibration and sycophancy — so anyone can pick the model that tells them the truth.</p>
           <span class="tag">Forethought design sketch</span>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="11" r="2.2"/><circle cx="19" cy="4" r="2.2"/><path d="M6.5 17.5l4-5M13.5 9.5l4-4"/></svg></div>
           <h3>Provenance Tracer</h3>
-          <p>A tool that lets anyone reading a claim instantly pull up where it came from — the original source, the chain it travelled through, and how robust it actually is — before believing or sharing it.</p>
+          <p>See where any claim came from — the original source, the chain it travelled through, and how robust it is — before you believe or share it.</p>
           <span class="tag">Forethought design sketch</span>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/><path d="M17.5 2.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg></div>
           <h3>Angel on the Shoulder</h3>
-          <p>A personal, customisable AI advisor that sits alongside you in real time — flagging manipulation, surfacing your blind spots, and nudging you toward better decisions at the moment they’re made.</p>
+          <p>A personal AI advisor at your side — flagging manipulation, surfacing blind spots, and nudging you toward better decisions in the moment.</p>
           <span class="tag">Forethought design sketch</span>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 4.5-3.2 8.6-8 10-4.8-1.4-8-5.5-8-10V6z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
           <h3>Secret-Loyalty Audit Kit</h3>
-          <p>Privacy-preserving protocols that let third parties audit an AI company’s claims about training — verifying models are free of backdoors and hidden loyalties without exposing trade secrets.</p>
+          <p>Privacy-preserving audits that verify models are free of backdoors and hidden loyalties — without exposing a lab’s trade secrets.</p>
           <span class="tag">Checks &amp; Balances</span>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="3"/><path d="M3 8l9 5 9-5"/><path d="M12 20.5v-3"/></svg></div>
           <h3>Safe Harbor</h3>
-          <p>Secure reporting infrastructure for AI-industry insiders: a private hotline, routing to legal support, and resources that make it safe to speak up when something is going wrong inside a lab.</p>
+          <p>Secure reporting for AI-industry insiders: a private hotline, legal support, and resources that make it safe to speak up.</p>
           <span class="tag">Checks &amp; Balances</span>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="url(#og)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M17 14v6M14 17h6"/></svg></div>
           <h3>Structured Transparency Dashboard</h3>
-          <p>Tooling that lets AI companies and auditors check each other’s work — verifying claims about model-weight integrity, training data and safety features through structured-transparency protocols.</p>
+          <p>Lets AI companies and auditors check each other’s work — verifying claims about model weights, training data and safety features.</p>
           <span class="tag">Checks &amp; Balances</span>
         </div>
       </div>
       <div class="vetted reveal">
         <h3>No research taste required. <span class="grad-text">The vetting is already done.</span></h3>
-        <p>We’re not making these ideas up, and we won’t ask you to. Deciding what’s worth building in AI safety takes years of research judgement — so we leave that to the experts. Every product on the menu comes from lists that already exist, vetted by the people who published them, and the AI safety experts we plan to bring onto our board of trustees will keep adding to it. You pick, you build.</p>
+        <p>Deciding what’s worth building takes years of research judgement — so we leave that to the experts. The menu comes from lists that already exist, and the experts we bring onto our board of trustees will keep adding to it. You pick, you build.</p>
       </div>
       <p class="prod-src reveal">Example directions adapted from Forethought’s <a href="https://www.forethought.org/research/design-sketches-for-a-more-sensible-world" target="_blank" rel="noopener">Design sketches for a more sensible world</a> and the <a href="https://checks-and-balances.ai/" target="_blank" rel="noopener">Checks &amp; Balances in an Automated Society</a> request for proposals — lists built and vetted by experts in the field.</p>
     </div>
@@ -506,7 +506,7 @@
     <div class="wrap">
       <span class="eyebrow">Already in motion</span>
       <h2>Epistemic Bench. The frontend is <span class="grad-text">built.</span></h2>
-      <p class="big">Our first product is underway: a benchmark for the epistemic virtues of AI models. The interface exists — now it needs a technical builder to wire it up to real evals. We’re looking for that person in Lisbon.</p>
+      <p class="big">Our first product is underway: a benchmark for the epistemic virtues of AI models. Now it needs a technical builder to wire it up to real evals — we’re looking for that person in Lisbon.</p>
       <a class="btn btn-primary" href="#apply">That’s me — get in touch</a>
       <div class="bench-panel">
         <div class="bench-item reveal">
