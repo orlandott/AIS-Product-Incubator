@@ -1,6 +1,6 @@
-# AIS Product Incubator website
+# AI Safety Foundry website
 
-Landing site for the **AIS Product Incubator**, an AI safety product incubator in Lisbon run in collaboration with the [Lisbon AI Safety Hub (LAISH)](https://lisbonaisafetyhub.org/).
+Landing site for the **AI Safety Foundry**, an AI safety product incubator in Lisbon run in collaboration with the [Lisbon AI Safety Hub (LAISH)](https://lisbonaisafetyhub.org/).
 
 ## The program
 
